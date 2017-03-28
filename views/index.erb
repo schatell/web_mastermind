@@ -1,5 +1,7 @@
 <html>
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="instruction.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
     <title>Mastermind</title>
@@ -7,10 +9,11 @@
   <body>
       <h1>MasterMind</h1>
       <div class="main_container">
+        <div id="instruction"></div>
         <h2>Please choose:</h2>
         <div class="game_container">
           <input type="submit" name="newgame" value="NewGame">
-          <input type="submit" name="how_to" value="How to play">
+          <input id="how_to" type="submit" name="how_to" value="How to play">
         </div>
       </div>
       <div class="footer">
