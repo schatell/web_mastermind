@@ -4,7 +4,7 @@ h1 {
   margin-bottom: 10px;
   letter-spacing: 4px;
   color: #cc0000;
-  font: bold 30px Arial, Helvetica, sans-serif;
+  font: bold 40px Arial, Helvetica, sans-serif;
 }
 .main_container{
   background-color: #ff6666;
@@ -56,6 +56,7 @@ h1 {
   border-radius: 10px;
   letter-spacing: 3px;
   box-shadow: 7px 10px 25px #ff1a1a;
+  cursor: pointer;
 }
 .footer {
   background-color: #ffe6e6;
@@ -83,11 +84,70 @@ h1 {
   position: absolute;
   top: 140px;
   left: -2000px;
-  border: 5px solid #ff1a1a;
+  border: 5px solid #cc0000;
   border-radius: 25px;
   background-color: white;
   box-shadow: 10px 5px 20px #ff9999;
   height: 65%;
   width: 180%;
   max-width: 800px;
+  list-style: circle;
+
+}
+.logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
+  padding: 10px 10px 0px 0px;
+  height: 45px;
+  width: 45px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.logo path {
+  fill: #ff6666;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+.logo:hover path{
+  fill: #cc0000;
+}
+.logo:hover{
+  cursor: pointer;
+  height: 53px;
+  width: 53px;
+  padding: 6px 6px 0px 0px;
+}
+#instruction h2{
+  padding: 15px 0px 0px 10px;
+  float: left;
+  top: 0;
+  left: 0;
+  color: #ff6666;
+}
+#instruction h4{
+  color: #ff6666;
+  display: block;
+  clear: both;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  padding-top: 12px;
+  margin-left: 20px;
+}
+#instruction p{
+  clear: both;
+  display: block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 25px;
+}
+#instruction ul{
+  margin-left: 3px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+#first_p{
+  text-align:right;
+  padding-top: 50px;
 }
