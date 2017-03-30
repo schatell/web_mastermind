@@ -25,9 +25,17 @@ $(document).ready(
       }, 500);
       $('#player_type').animate({
         right: '-2000px'
-      },500,function() {
+      },500,function(){
         $('.main_container').css('overflow','visible')
       });
     });
+    $('#codemaker').click(function(){
+      $('#player_type').animate({
+        left: '-2000px'
+      }, 500);
+      $('#code_maker_menu').animate({
+        right: '0'
+      }, 500);
+    })
   }
 )
