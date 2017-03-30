@@ -5,7 +5,7 @@ $(document).ready(
         left: $("#instruction").parent().width()/2 - $("#instruction").width()/2
       }, 500);
     });
-    $('.logo').click(function(){
+    $('#close').click(function(){
       $('#instruction').animate({
         left: "-2000px"
       }, 500);
@@ -16,7 +16,18 @@ $(document).ready(
       }, 500);
       $('#player_type').animate({
         right: "0"
-      }, 500)
+      }, 500);
+      $('.main_container').css('overflow','hidden');
+    });
+    $('#back_arrow').click(function(){
+      $('#menu').animate({
+        right: "0", left :"0"
+      }, 500);
+      $('#player_type').animate({
+        right: '-2000px'
+      },500,function() {
+        $('.main_container').css('overflow','visible')
+      });
     });
   }
 )

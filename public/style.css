@@ -65,6 +65,17 @@ h1 {
 #player_type{
   right: -2000px;
 }
+#back_arrow path{
+  fill: white;
+}
+#back_arrow{
+  bottom: 0;
+  padding-bottom: 20px;
+  position: absolute;
+}
+#back_arrow:hover{
+  padding-bottom: 16px;
+}
 .control:hover{
   background-color: #ff9999;
   color: white;
@@ -110,29 +121,35 @@ h1 {
   list-style: circle;
 }
 .logo {
-  position: absolute;
-  top: 0;
-  right: 0;
-  float: right;
-  padding: 10px 10px 0px 0px;
   height: 45px;
   width: 45px;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-.logo path {
+#close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  float: right;
+  padding: 10px 10px 0px 0px;
+}
+#close path{
   fill: #ff6666;
+}
+#close:hover{
+  padding: 6px 6px 0px 0px;
+}
+.logo path {
   -webkit-transition: 0.6s;
   transition: 0.6s;
 }
-.logo:hover path{
+#close:hover path{
   fill: #cc0000;
 }
-.logo:hover{
+.logo:hover {
   cursor: pointer;
   height: 53px;
   width: 53px;
-  padding: 6px 6px 0px 0px;
 }
 #instruction h2{
   padding: 15px 0px 0px 10px;
