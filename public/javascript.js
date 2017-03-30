@@ -11,8 +11,12 @@ $(document).ready(
       }, 500);
     });
     $('#newgame').click(function(){
-      $('#newgame').hide();
-      $("#how_to").hide();
+      $('#menu').animate({
+        left: "-3000px"
+      }, 500);
+      $('#player_type').animate({
+        right: "0"
+      }, 500)
     });
-  };
+  }
 )
