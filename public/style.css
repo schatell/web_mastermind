@@ -104,16 +104,17 @@ h1 {
   fill: white;
 }
 #back_arrow{
-  bottom: 0;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
   position: absolute;
+  right: -2000px;
+  bottom: 0;
+  margin-bottom: 20px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 #back_arrow:hover{
   margin-bottom: 16px;
-  margin-left: 16px;
-  margin-right: 16px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .control:hover{
   background-color: #ff9999;
