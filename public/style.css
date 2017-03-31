@@ -10,6 +10,8 @@ h1 {
   font: bold 40px Arial, Helvetica, sans-serif;
 }
 .main_container{
+  justify-content: center;
+  display: flex;
   left: 0;
   right: 0;
   margin-left: 0 auto;
@@ -103,11 +105,15 @@ h1 {
 }
 #back_arrow{
   bottom: 0;
-  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
   position: absolute;
 }
 #back_arrow:hover{
-  padding-bottom: 16px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
 }
 .control:hover{
   background-color: #ff9999;
@@ -140,6 +146,7 @@ h1 {
   float: right;
 }
 #instruction {
+  text-align: center;
   z-index: 2;
   position: absolute;
   top: 140px;
@@ -151,7 +158,6 @@ h1 {
   height: 65%;
   width: 180%;
   max-width: 800px;
-  list-style: circle;
   overflow: auto;
 }
 .logo {
@@ -214,13 +220,13 @@ h4{
   font: arial, sans-serif;
 }
 #instruction ul{
+  list-style-type: none;
   margin-left: 3px;
   margin-top: 0px;
   margin-bottom: 5px;
-  font: 14px arial, sans-serif;
+  font: arial, sans-serif;
 }
 #first_p{
   text-align:right;
   padding-top: 50px;
-  font: bold 14px arial, sans-serif;
 }
