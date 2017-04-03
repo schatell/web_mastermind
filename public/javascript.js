@@ -68,7 +68,7 @@ $(document).ready(function(){
         back_button = 'playertype'
       };
     });
-
+    
     //SlideIn the CodeMaker menu
     $('#codemaker').click(function(){
       $('#player_type').animate({
