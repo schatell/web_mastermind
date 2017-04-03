@@ -1,6 +1,11 @@
 var back_button = 'playertype';
 
+var color = ["#E60000", "#0066FF", "#ffff00", "#66FF33", "#993366", "#00ffcc"]
+
 $(document).ready(function(){
+
+  //Make the submit button unclickable
+  $("#inactive").prop('disabled', true);
 
   //Show the instructions
     $("#how_to").click(function(){
@@ -68,7 +73,7 @@ $(document).ready(function(){
         back_button = 'playertype'
       };
     });
-    
+
     //SlideIn the CodeMaker menu
     $('#codemaker').click(function(){
       $('#player_type').animate({

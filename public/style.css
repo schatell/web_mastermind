@@ -32,7 +32,7 @@ h1 {
   font: bold 30px Arial, Helvetica, sans-serif;
   color: white;
 }
-.control{
+.control, input[type="submit"]{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,6 +69,11 @@ h1 {
 }
 #code_maker_menu{
   right: -2000px;
+  justify-content: flex-start;
+}
+#code_maker_menu h2{
+  padding-top: 130px;
+  padding-bottom: 10px;
 }
 .pin_wrap{
   margin-top: 50px;
@@ -76,14 +81,20 @@ h1 {
   justify-content: center;
   display: flex;
   flex-direction: row;
+  z-index: 2;
 }
 .pin{
   margin: 10px;
-  background-color: grey;
-  border-radius: 25px;
+  background-color: rgba(209, 199, 199, 0.8);
+  border: 4px solid white;
+  border-radius: 50%;
   height: 50px;
   width: 50px;
   bottom: 0;
+  z-index: 3;
+}
+.pin:hover{
+  cursor: pointer;
 }
 .code_chooser_wrap{
   text-align: center;
@@ -116,13 +127,37 @@ h1 {
   padding-left: 0px;
   padding-right: 0px;
 }
-.control:hover{
+.control:hover, input[type="submit"]:hover{
   background-color: #ff9999;
   color: white;
   border-radius: 10px;
   letter-spacing: 3px;
   box-shadow: 7px 10px 25px #ff1a1a;
   cursor: pointer;
+}
+#code_maker_form{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+#code_maker_form input{
+  margin-top: 120%;
+}
+#inactive {
+  background-color: rgba(209, 199, 199, 0.8);
+  cursor: auto;
+  border-radius: 20px;
+  letter-spacing: normal;
+}
+#inactive:hover{
+
 }
 .footer {
   background-color: #ffe6e6;
