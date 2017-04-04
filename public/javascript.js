@@ -178,11 +178,12 @@ $(document).ready(function(){
         };
       };
     });
+
     $('#code_maker_form').submit(function(e){
-      $(this).append("<input type='hidden' name='color1' value=" + indexes[0] + " >");
-      $(this).append("<input type='hidden' name='color2' value=" + indexes[1] + " >");
-      $(this).append("<input type='hidden' name='color3' value=" + indexes[2] + " >");
-      $(this).append("<input type='hidden' name='color3' value=" + indexes[3] + " >");
+      $(this).append("<input type='hidden' name='color1' value=" + (indexes[0]-1) + " >");
+      $(this).append("<input type='hidden' name='color2' value=" + (indexes[1]-1) + " >");
+      $(this).append("<input type='hidden' name='color3' value=" + (indexes[2]-1) + " >");
+      $(this).append("<input type='hidden' name='color4' value=" + (indexes[3]-1) + " >");
     })
 
   }
