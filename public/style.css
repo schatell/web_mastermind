@@ -14,7 +14,6 @@ h1 {
   display: flex;
   left: 0;
   right: 0;
-  margin-left: 0 auto;
   background-color: #ff6666;
   width: 55%;
   max-width: 400px;
@@ -274,7 +273,7 @@ h4{
   padding-top: 50px;
 }
 .play_column>.pin_wrap{
-  margin-top: 15px;
+  margin-top: 10px;
   left: 0;
 }
 #play_area{
@@ -288,6 +287,8 @@ h4{
   width: 25px;
   background-color: rgba(209, 199, 199, 0.8);
   border: 4px solid white;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 .play_column{
   column-rule: 2px solid black;
@@ -304,9 +305,54 @@ h4{
 #divider{
   display: flex;
   align-self: flex-start;
-  margin-top: 120px;
-  height: 63%;
+  margin-top: 100px;
+  height: 62%;
   width: 2px;
   background-color: #cc0000;
-  opacity: 0.6;
+  opacity: 0.4;
+}
+#next_guess_container{
+  height: 23%;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+#next_guess_container h2{
+  padding-top: 10px;
+}
+#divider_horizontal{
+  position: absolute;
+  width: 90%;
+  height: 2px;
+  background-color: #cc0000;
+  opacity: 0.4;
+  bottom: 23%;
+}
+#next_guess_container .pin_wrap{
+  margin-top: 0px;
+}
+#next_guess_container form{
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 0;
+}
+#next_guess_container input[type="submit"]{
+  height: 50%;
+  width: 63%;
+  text-align: center;
+  border: 5px solid white;
+  font: bold 25px Arial, Helvetica, sans-serif;
+  color: white;
+  box-shadow: 5px 8px 25px #ff3333;
+  margin-bottom: 12px;
+  margin-top: 0px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  z-index: 3;
 }
