@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+  //Set the back button relative to the state of the page on load
   var back_button = 'playertype';
 
   //This function store the possible color in an array
@@ -178,6 +179,7 @@ $(document).ready(function(){
         };
       };
     });
+
 
   }
 );

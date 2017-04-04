@@ -5,12 +5,12 @@ get '/' do
   erb :index
 end
 
-post '/codemaker' do
+get '/codemaker' do
   @player_type = "CodeMaker"
   erb :play
 end
 
-post '/codebreaker' do
+get '/codebreaker' do
   @player_type = "Codebreaker"
   erb :play
 end
