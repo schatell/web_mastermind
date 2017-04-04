@@ -160,7 +160,6 @@ $(document).ready(function(){
 
     //Set the color of individual pin on click
     $('.pin').click(function(){
-      console.log(indexes)
       if (indexes[find_pin_number(this.id)] <= 5) {
         $(this).css({'background-color' : setColor(indexes[find_pin_number(this.id)])});
         indexes[find_pin_number(this.id)] += 1;
@@ -179,7 +178,12 @@ $(document).ready(function(){
         };
       };
     });
-
+    $('#code_maker_form').submit(function(e){
+      $(this).append("<input type='hidden' name='color1' value=" + indexes[0] + " >");
+      $(this).append("<input type='hidden' name='color2' value=" + indexes[1] + " >");
+      $(this).append("<input type='hidden' name='color3' value=" + indexes[2] + " >");
+      $(this).append("<input type='hidden' name='color3' value=" + indexes[3] + " >");
+    })
 
   }
 );
