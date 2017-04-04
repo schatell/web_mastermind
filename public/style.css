@@ -273,3 +273,40 @@ h4{
   text-align:right;
   padding-top: 50px;
 }
+.play_column>.pin_wrap{
+  margin-top: 15px;
+  left: 0;
+}
+#play_area{
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.play_pin{
+  display: flex;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  background-color: rgba(209, 199, 199, 0.8);
+  border: 4px solid white;
+}
+.play_column{
+  column-rule: 2px solid black;
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.play_column h2{
+  padding-top: 25px;
+}
+#divider{
+  display: flex;
+  align-self: flex-start;
+  margin-top: 120px;
+  height: 63%;
+  width: 2px;
+  background-color: #cc0000;
+  opacity: 0.6;
+}
