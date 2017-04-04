@@ -1,48 +1,48 @@
-var back_button = 'playertype';
-
-//This function store the possible color in an array
-function setColor(index) {
-  var colors = ["#E60000",
-                "#0066FF",
-                "#ffff00",
-                "#66FF33",
-                "#993366",
-                "#00ffcc"]
-  return colors[index];
-}
-
-//This function convert the pin id to an integer
-function find_pin_number(number) {
-  if (number == "pin1") {
-    clicked_once[0] = 1;
-    return 0;
-  }
-  else if (number == "pin2") {
-    clicked_once[1] = 1;
-    return 1;
-  }
-  else if (number == "pin3") {
-    clicked_once[2] = 1;
-    return 2;
-  }
-  else if (number == "pin4") {
-    clicked_once[3] = 1;
-    return 3;
-  }
-}
-
-//Check if each pin was colored
-function check_clicked_once(number){
-  return number == 1;
-}
-
-//Numerical storing of color
-var indexes = [0, 0, 0, 0];
-
-//Get a 1 once the pin has been clicked at least once
-var clicked_once = [0, 0, 0, 0];
-
 $(document).ready(function(){
+
+  var back_button = 'playertype';
+
+  //This function store the possible color in an array
+  function setColor(index) {
+    var colors = ["#E60000",
+                  "#0066FF",
+                  "#ffff00",
+                  "#66FF33",
+                  "#993366",
+                  "#00ffcc"]
+    return colors[index];
+  }
+
+  //This function convert the pin id to an integer
+  function find_pin_number(number) {
+    if (number == "pin1") {
+      clicked_once[0] = 1;
+      return 0;
+    }
+    else if (number == "pin2") {
+      clicked_once[1] = 1;
+      return 1;
+    }
+    else if (number == "pin3") {
+      clicked_once[2] = 1;
+      return 2;
+    }
+    else if (number == "pin4") {
+      clicked_once[3] = 1;
+      return 3;
+    }
+  }
+
+  //Check if each pin was colored
+  function check_clicked_once(number){
+    return number == 1;
+  }
+
+  //Numerical storing of color
+  var indexes = [0, 0, 0, 0];
+
+  //Get a 1 once the pin has been clicked at least once
+  var clicked_once = [0, 0, 0, 0];
 
   //Make the submit button unclickable
   $(".inactive").prop('disabled', 'disabled');
