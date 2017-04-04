@@ -45,7 +45,7 @@ var clicked_once = [0, 0, 0, 0];
 $(document).ready(function(){
 
   //Make the submit button unclickable
-  $(".inactive").prop('disabled', true);
+  $(".inactive").prop('disabled', 'disabled');
 
   //Show the instructions
     $("#how_to").click(function(){
@@ -100,7 +100,7 @@ $(document).ready(function(){
         $('#back_arrow').animate({
           right: '-2000px'
         }, 100);
-      }else {
+      }else if ((back_button == 'code_maker')) {
         $('#player_type').show()
         $('#code_maker_menu').animate({
           right: '-2000px'
@@ -111,7 +111,18 @@ $(document).ready(function(){
           left: '0'
         }, 500);
         back_button = 'playertype'
-      };
+      } else if (back_button == 'code_breaker') {
+        $('#player_type').show()
+        $('#code_breaker_menu').animate({
+          right: '-2000px'
+        }, 500, function(){
+          $('#code_breaker_menu').hide();
+        })
+        $('#player_type').animate({
+          left: '0'
+        }, 500);
+        back_button = 'playertype'
+      }
     });
 
     //SlideIn the CodeMaker menu
@@ -130,6 +141,22 @@ $(document).ready(function(){
       back_button = 'code_maker'
     })
 
+    //SlideIn the CodeMaker menu
+    $('#codebreaker').click(function(){
+      $('#player_type').animate({
+        left: '-2000px'
+      }, 500, function(){
+        $('#player_type').hide();
+      });
+
+      //Show the CodeMakerMenu and animate it
+      $('#code_breaker_menu').show();
+      $('#code_breaker_menu').animate({
+        right: '0'
+      }, 500);
+      back_button = 'code_breaker'
+    })
+
     //Set the color of individual pin on click
     $('.pin').click(function(){
       console.log(indexes)
@@ -138,7 +165,7 @@ $(document).ready(function(){
         indexes[find_pin_number(this.id)] += 1;
         if (clicked_once.every(check_clicked_once)) {
           $('#play_button').removeClass("inactive");
-          $(".inactive").prop('disabled', false);
+          $("#play_button").removeAttr('disabled');
         };
       }
       else {
@@ -147,7 +174,7 @@ $(document).ready(function(){
         indexes[find_pin_number(this.id)] += 1;
         if (clicked_once.every(check_clicked_once)) {
           $('#play_button').removeClass("inactive");
-          $(".inactive").prop('disabled', false);
+          $("#play_button").removeAttr('disabled');
         };
       };
     });

@@ -67,11 +67,15 @@ h1 {
 #player_type{
   right: -2000px;
 }
+#code_breaker_menu{
+  right: -2000px;
+  justify-content: flex-start;
+}
 #code_maker_menu{
   right: -2000px;
   justify-content: flex-start;
 }
-#code_maker_menu h2{
+.button_wrap h2{
   padding-top: 130px;
   padding-bottom: 10px;
 }
@@ -135,7 +139,7 @@ h1 {
   box-shadow: 7px 10px 25px #ff1a1a;
   cursor: pointer;
 }
-#code_maker_form{
+form{
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -147,7 +151,7 @@ h1 {
   padding-bottom: 0;
   margin-bottom: 0;
 }
-#code_maker_form input{
+input[type="submit"]{
   margin-top: 120%;
 }
 input.inactive {
