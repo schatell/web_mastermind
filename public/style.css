@@ -150,14 +150,17 @@ h1 {
 #code_maker_form input{
   margin-top: 120%;
 }
-#inactive {
+input.inactive {
   background-color: rgba(209, 199, 199, 0.8);
   cursor: auto;
   border-radius: 20px;
   letter-spacing: normal;
 }
-#inactive:hover{
-
+input.inactive:hover{
+  cursor: auto;
+  border-radius: 20px;
+  letter-spacing: normal;
+  background-color: rgba(209, 199, 199, 0.8);
 }
 .footer {
   background-color: #ffe6e6;

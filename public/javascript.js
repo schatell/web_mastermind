@@ -1,11 +1,51 @@
 var back_button = 'playertype';
 
-var color = ["#E60000", "#0066FF", "#ffff00", "#66FF33", "#993366", "#00ffcc"]
+//This function store the possible color in an array
+function setColor(index) {
+  var colors = ["#E60000",
+                "#0066FF",
+                "#ffff00",
+                "#66FF33",
+                "#993366",
+                "#00ffcc"]
+  return colors[index];
+}
+
+//This function convert the pin id to an integer
+function find_pin_number(number) {
+  if (number == "pin1") {
+    clicked_once[0] = 1;
+    return 0;
+  }
+  else if (number == "pin2") {
+    clicked_once[1] = 1;
+    return 1;
+  }
+  else if (number == "pin3") {
+    clicked_once[2] = 1;
+    return 2;
+  }
+  else if (number == "pin4") {
+    clicked_once[3] = 1;
+    return 3;
+  }
+}
+
+//Check if each pin was colored
+function check_clicked_once(number){
+  return number == 1;
+}
+
+//Numerical storing of color
+var indexes = [0, 0, 0, 0];
+
+//Get a 1 once the pin has been clicked at least once
+var clicked_once = [0, 0, 0, 0];
 
 $(document).ready(function(){
 
   //Make the submit button unclickable
-  $("#inactive").prop('disabled', true);
+  $(".inactive").prop('disabled', true);
 
   //Show the instructions
     $("#how_to").click(function(){
@@ -89,5 +129,28 @@ $(document).ready(function(){
       }, 500);
       back_button = 'code_maker'
     })
+
+    //Set the color of individual pin on click
+    $('.pin').click(function(){
+      console.log(indexes)
+      if (indexes[find_pin_number(this.id)] <= 5) {
+        $(this).css({'background-color' : setColor(indexes[find_pin_number(this.id)])});
+        indexes[find_pin_number(this.id)] += 1;
+        if (clicked_once.every(check_clicked_once)) {
+          $('#play_button').removeClass("inactive");
+          $(".inactive").prop('disabled', false);
+        };
+      }
+      else {
+        (indexes[find_pin_number(this.id)]) = 0;
+        $(this).css({'background-color' : setColor(0)});
+        indexes[find_pin_number(this.id)] += 1;
+        if (clicked_once.every(check_clicked_once)) {
+          $('#play_button').removeClass("inactive");
+          $(".inactive").prop('disabled', false);
+        };
+      };
+    });
+
   }
-)
+);
