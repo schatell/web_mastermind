@@ -4,8 +4,14 @@
     <h2>Guesses</h2>
     <% for x in 0..11 do %>
     <div class="pin_wrap">
-      <% for y in 0..3 do %>
-        <div class="play_pin"></div>
+      <% if session[:previous_guess][x]!= nil %>
+        <% session[:previous_guess][x].each do |color_ref| %>
+          <div style="background-color:<%= color_ref %>"class="play_pin"></div>
+        <% end %>
+        <% else %>
+        <% for y in 0..3 do %>
+          <div class="play_pin"></div>
+        <% end %>
       <% end %>
     </div>
     <% end %>

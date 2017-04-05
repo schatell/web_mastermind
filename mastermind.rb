@@ -70,10 +70,15 @@ post '/codebreaker' do
   guess.push(params["guess2"])
   guess.push(params["guess3"])
   guess.push(params["guess4"])
-  session[:previous_guess].push(guess)
   #give_fb(guess)
+  colorized_guess = []
+  for x in 0..3 do
+    colorized_guess.push(find_color(guess[x].to_i))
+  end
+  session[:previous_guess].push(colorized_guess)
+
   #gamewon?
-  #augmenter le compteur de tour
+  session[:current_turn] += 1
   #si tour == 12 game terminer et perdu
-  erb :play ,:locals => {:session => session}
+  erb :play ,:locals => {:session => session, :previous_fb => session[:previous_fb]}
 end
