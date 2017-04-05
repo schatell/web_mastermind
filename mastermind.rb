@@ -25,16 +25,18 @@ helpers do
     this_turn_feedback = []
     skip_code = [0, 1, 2, 3]
     for y in 0..3 do
-      if guess[y] == (session[:secret_code[y]])
-       this_turn_feedback.push("W")
-       guess[y] = white
-       skip_code.delete(y)
+      if guess[y] == (session[:secret_code][y])
+       this_turn_feedback.push("white")
+       skip_code - [y]
       end
     end
     skip_code.each do | elem |
-      if guess.include?(session[:secret_code[elem]])
-        this_turn_feedback.push("B")
+      if guess.include?(session[:secret_code][elem])
+        this_turn_feedback.push("black")
       end
+    end
+    until this_turn_feedback.length == 4
+      this_turn_feedback.push("")
     end
     session[:previous_fb].push(this_turn_feedback)
   end
@@ -61,16 +63,18 @@ get '/codebreaker' do
   session[:current_turn] = 0
   session[:previous_fb] = []
   session[:previous_guess] = []
+  session[:victory] = false
+  session[:lose] = false
   erb :play
 end
 
 post '/codebreaker' do
   guess = []
-  guess.push(params["guess1"])
-  guess.push(params["guess2"])
-  guess.push(params["guess3"])
-  guess.push(params["guess4"])
-  #give_fb(guess)
+  guess.push(params["guess1"].to_i)
+  guess.push(params["guess2"].to_i)
+  guess.push(params["guess3"].to_i)
+  guess.push(params["guess4"].to_i)
+  give_fb(guess)
   colorized_guess = []
   for x in 0..3 do
     colorized_guess.push(find_color(guess[x].to_i))
@@ -80,5 +84,12 @@ post '/codebreaker' do
   #gamewon?
   session[:current_turn] += 1
   #si tour == 12 game terminer et perdu
-  erb :play ,:locals => {:session => session, :previous_fb => session[:previous_fb]}
+  if session[:current_turn] == 12
+    erb :play, :locals => {:session => session, :lose => true, :victory => false}
+  elsif session[:victory] == true
+    erb :play, :locals => {:session => session, :lose => false, :victory => true}
+  else
+    erb :play, :locals => {:session => session, :lose => false, :victory => false}
+  end
+
 end

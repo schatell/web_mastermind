@@ -48,6 +48,7 @@ $(document).ready(function(){
   //Make the submit button unclickable
   $(".inactive").prop('disabled', 'disabled');
 
+
   //Show the instructions
     $("#how_to").click(function(){
       $('#instruction').show();
@@ -166,6 +167,8 @@ $(document).ready(function(){
         if (clicked_once.every(check_clicked_once)) {
           $('#play_button').removeClass("inactive");
           $("#play_button").removeAttr('disabled');
+          $('#play_next').removeClass("inactive");
+          $("#play_next").removeAttr("disabled");
         };
       }
       else {
@@ -175,10 +178,13 @@ $(document).ready(function(){
         if (clicked_once.every(check_clicked_once)) {
           $('#play_button').removeClass("inactive");
           $("#play_button").removeAttr('disabled');
+          $('#play_next').removeClass("inactive");
+          $("#play_next").removeAttr("disabled");
         };
       };
     });
 
+    //When the codemakerform is submited, it will append params so the server know about the code
     $('#code_maker_form').submit(function(e){
       $(this).append("<input type='hidden' name='color1' value=" + (indexes[0]-1) + " >");
       $(this).append("<input type='hidden' name='color2' value=" + (indexes[1]-1) + " >");
@@ -186,6 +192,7 @@ $(document).ready(function(){
       $(this).append("<input type='hidden' name='color4' value=" + (indexes[3]-1) + " >");
     });
 
+    //When a guess is submited, it append input so the params are transfered to the server
     $('#next_guess').submit(function(e){
       $(this).append("<input type='hidden' name='guess1' value=" + (indexes[0]-1) + " >");
       $(this).append("<input type='hidden' name='guess2' value=" + (indexes[1]-1) + " >");

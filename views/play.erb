@@ -23,8 +23,14 @@
     <h2>Feedback</h2>
     <% for x in 0..11 do %>
     <div class="pin_wrap">
-      <% for y in 0..3 do %>
-        <div class="play_pin"></div>
+      <% if session[:previous_fb][x]!= nil %>
+        <% session[:previous_fb][x].each do |fb| %>
+          <div style="background-color:<%= fb %>"class="play_pin"></div>
+        <% end %>
+        <% else %>
+        <% for y in 0..3 do %>
+          <div class="play_pin"></div>
+        <% end %>
       <% end %>
     </div>
     <% end %>
@@ -54,8 +60,20 @@
       <div id="pin4" class="pin"></div>
     </div>
     <form id="next_guess" method="post" action="/codebreaker">
-      <input type="submit" id="play_next" value="Make Move">
+      <input type="submit" id="play_next" class="inactive" value="Make Move">
     </form>
   <% end %>
 
 </div>
+
+<% if session[:victory] == true || session[:lose] == true %>
+  <div class="endgame div">
+    <% if session[:victory] == true %>
+      <h2>You won!</h2>
+    <% else %>
+      <h2>You lost</h2>
+    <% end %>
+    <p>Redirecting you to main menu</p>
+  </div>
+
+<% end %>
