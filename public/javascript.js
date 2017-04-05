@@ -184,7 +184,14 @@ $(document).ready(function(){
       $(this).append("<input type='hidden' name='color2' value=" + (indexes[1]-1) + " >");
       $(this).append("<input type='hidden' name='color3' value=" + (indexes[2]-1) + " >");
       $(this).append("<input type='hidden' name='color4' value=" + (indexes[3]-1) + " >");
-    })
+    });
+
+    $('#next_guess').submit(function(e){
+      $(this).append("<input type='hidden' name='guess1' value=" + (indexes[0]-1) + " >");
+      $(this).append("<input type='hidden' name='guess2' value=" + (indexes[1]-1) + " >");
+      $(this).append("<input type='hidden' name='guess3' value=" + (indexes[2]-1) + " >");
+      $(this).append("<input type='hidden' name='guess4' value=" + (indexes[3]-1) + " >");
+    });
 
   }
 );

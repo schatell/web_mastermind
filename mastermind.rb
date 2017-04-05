@@ -21,29 +21,23 @@ helpers do
     return code
   end
 
-  # def give_fb
-  #  white = 0
-  #  black = 0
-  #  y = 0
-  #  z = 0
-  #  guess_arr = []
-  #  skip_code = [0, 1, 2, 3]
-  #  for x in 0..3 do
-  #    guess_arr.push("o".colorize(guess[x].to_sym))
-  #  end
-  #  for y in 0..3 do
-  #    if guess_arr[y] == @code[y]
-  #      white += 1
-  #      guess_arr[y] = white
-  #      skip_code.delete(y)
-  #    end
-  #  end
-  #  skip_code.each do | elem |
-  #    if guess_arr.include?@code[elem]
-  #      black += 1
-  #    end
-  #  end
-#  end
+  def give_fb(guess)
+    this_turn_feedback = []
+    skip_code = [0, 1, 2, 3]
+    for y in 0..3 do
+      if guess[y] == (session[:secret_code[y]])
+       this_turn_feedback.push("W")
+       guess[y] = white
+       skip_code.delete(y)
+      end
+    end
+    skip_code.each do | elem |
+      if guess.include?(session[:secret_code[elem]])
+        this_turn_feedback.push("B")
+      end
+    end
+    session[:previous_fb].push(this_turn_feedback)
+  end
 
 end
 
@@ -65,15 +59,21 @@ end
 get '/codebreaker' do
   session[:secret_code] = create_code
   session[:current_turn] = 0
+  session[:previous_fb] = []
+  session[:previous_guess] = []
   erb :play
 end
 
 post '/codebreaker' do
-  erb :play
-  #Receive the code
-  #Store the code in an array
-  #give_fb(#codearray)
+  guess = []
+  guess.push(params["guess1"])
+  guess.push(params["guess2"])
+  guess.push(params["guess3"])
+  guess.push(params["guess4"])
+  session[:previous_guess].push(guess)
+  #give_fb(guess)
   #gamewon?
   #augmenter le compteur de tour
   #si tour == 12 game terminer et perdu
+  erb :play ,:locals => {:session => session}
 end
