@@ -8,7 +8,7 @@ $(document).ready(function(){
     var colors = ["#E60000",
                   "#0066FF",
                   "#ffff00",
-                  "#66FF33",
+                  "#009933",
                   "#993366",
                   "#00ffcc"]
     return colors[index];

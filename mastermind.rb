@@ -7,7 +7,7 @@ helpers do
     color = ["#E60000",
              "#0066FF",
              "#ffff00",
-             "#66FF33",
+             "#009933",
              "#993366",
              "#00ffcc"]
     return color[numerical_color]
@@ -22,19 +22,35 @@ helpers do
   end
 
   def give_fb(guess)
+    #Initial variables
     this_turn_feedback = []
-    skip_code = [0, 1, 2, 3]
-    for y in 0..3 do
-      if guess[y] == (session[:secret_code][y])
-       this_turn_feedback.push("white")
-       skip_code - [y]
+    to_check = [true, true, true, true]
+    code = session[:secret_code]
+    #Check to see equal position (white pins)
+    to_check.each_with_index do |check, i|
+      if check
+        if code[i] == guess[i]
+          this_turn_feedback.push("white")
+          to_check[i] = false
+        end
       end
     end
-    skip_code.each do | elem |
-      if guess.include?(session[:secret_code][elem])
-        this_turn_feedback.push("black")
+
+    #Check for black pins
+    value_to_match = []
+    code.each_index do |i|
+      if to_check[i]
+        value_to_match << code[i]
       end
     end
+
+    guess.each_with_index do |symbol, i|
+      if to_check[i]
+        this_turn_feedback.push("black") if value_to_match.include?(guess[i])
+      end
+    end
+
+    #make sure that the feedback will be of length 4
     until this_turn_feedback.length == 4
       this_turn_feedback.push("")
     end
@@ -50,11 +66,14 @@ get '/' do
 end
 
 get '/codemaker' do
-  :session
   @color1 = find_color(params["color1"].chomp.to_i)
   @color2 = find_color(params["color2"].chomp.to_i)
   @color3 = find_color(params["color3"].chomp.to_i)
   @color4 = find_color(params["color4"].chomp.to_i)
+  session[:secret_code] = [@color1, @color2, @color3, @color4]
+  session[:current_turn] = 0
+  session[:previous_fb] = []
+  session[:previous_guess] = []
   erb :play
 end
 
