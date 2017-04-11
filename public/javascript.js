@@ -1,4 +1,7 @@
 $(document).ready(function(){
+  //Set a var endgame to desactivate button on end game
+  var endgame = false
+  console.log(endgame)
 
   //Set the back button relative to the state of the page on load
   var back_button = 'playertype';
@@ -164,7 +167,7 @@ $(document).ready(function(){
       if (indexes[find_pin_number(this.id)] <= 5) {
         $(this).css({'background-color' : setColor(indexes[find_pin_number(this.id)])});
         indexes[find_pin_number(this.id)] += 1;
-        if (clicked_once.every(check_clicked_once)) {
+        if ((clicked_once.every(check_clicked_once)) && endgame == false) {
           $('#play_button').removeClass("inactive");
           $("#play_button").removeAttr('disabled');
           $('#play_next').removeClass("inactive");

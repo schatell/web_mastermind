@@ -36,6 +36,19 @@
     <% end %>
   </div>
 
+  <% if victory || lose %>
+    <div class="endgame_div">
+      <% if session[:victory] == true %>
+        <h2>You won!</h2>
+      <% else %>
+        <h2>You lost!</h2>
+      <% end %>
+      <form method="get" action="/">
+        <input type="submit" name="return to main menu" value="Return to main menu">
+      </form>
+    </div>
+  <% end %>
+
 </div>
 
 <span id="divider_horizontal"></span>
@@ -52,6 +65,8 @@
     </div>
 
   <% else %>
+  <% unless victory || lose%>
+
   <h2>Next Guess:</h2>
     <div class="pin_wrap">
       <div id="pin1" class="pin"></div>
@@ -62,18 +77,7 @@
     <form id="next_guess" method="post" action="/codebreaker">
       <input type="submit" id="play_next" class="inactive" value="Make Move">
     </form>
+    <% end %>
   <% end %>
 
 </div>
-
-<% if session[:victory] == true || session[:lose] == true %>
-  <div class="endgame div">
-    <% if session[:victory] == true %>
-      <h2>You won!</h2>
-    <% else %>
-      <h2>You lost</h2>
-    <% end %>
-    <p>Redirecting you to main menu</p>
-  </div>
-
-<% end %>

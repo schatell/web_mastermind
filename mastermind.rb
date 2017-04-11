@@ -57,6 +57,12 @@ helpers do
     session[:previous_fb].push(this_turn_feedback)
   end
 
+  def check_victory(turn)
+    if session[:previous_fb][turn] == ["white", "white", "white", "white"]
+      return true
+    end
+  end
+
 end
 
 enable :sessions
@@ -84,7 +90,7 @@ get '/codebreaker' do
   session[:previous_guess] = []
   session[:victory] = false
   session[:lose] = false
-  erb :play
+  erb :play, :locals => {:session => session, :lose => false, :victory => false}
 end
 
 post '/codebreaker' do
@@ -100,10 +106,14 @@ post '/codebreaker' do
   end
   session[:previous_guess].push(colorized_guess)
 
-  #gamewon?
+  if check_victory(session[:current_turn])
+    session[:victory] = true
+  end
+
   session[:current_turn] += 1
+
   #si tour == 12 game terminer et perdu
-  if session[:current_turn] == 12
+  if session[:current_turn] >= 12
     erb :play, :locals => {:session => session, :lose => true, :victory => false}
   elsif session[:victory] == true
     erb :play, :locals => {:session => session, :lose => false, :victory => true}
