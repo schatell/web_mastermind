@@ -1,6 +1,3 @@
-body {
-  overflow: hidden;
-}
 h1 {
   text-align: center;
   margin-top: 20px;
@@ -10,6 +7,7 @@ h1 {
   font: bold 40px Arial, Helvetica, sans-serif;
 }
 .main_container{
+  overflow: hidden;
   justify-content: center;
   display: flex;
   left: 0;
@@ -68,13 +66,16 @@ h1 {
   right: 0px;
 }
 #player_type{
+  display: none;
   right: -2000px;
 }
 #code_breaker_menu{
+  display: none;
   right: -2000px;
   justify-content: flex-start;
 }
 #code_maker_menu{
+  display: none;
   right: -2000px;
   justify-content: flex-start;
 }
@@ -122,6 +123,7 @@ h1 {
   fill: white;
 }
 #back_arrow{
+  display: none;
   position: absolute;
   right: -2000px;
   bottom: 0;
@@ -143,8 +145,8 @@ h1 {
   cursor: pointer;
 }
 form{
-  position: absolute;
   display: flex;
+  position: absolute;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -192,6 +194,7 @@ input.inactive:hover{
   float: right;
 }
 #instruction {
+  overflow: hidden;
   text-align: center;
   z-index: 2;
   position: absolute;

@@ -55,6 +55,7 @@ $(document).ready(function(){
       $('#instruction').animate({
         left: $("#instruction").parent().width()/2 - $("#instruction").width()/2
       }, 500);
+      $(".main_container").css("overflow", "visible");
     });
 
     //Close the instructions
@@ -63,10 +64,11 @@ $(document).ready(function(){
         left: "-2000px"
       }, 500, function(){
         $('#instruction').hide();
+        $(".main_container").css("overflow", "hidden");
       });
     });
 
-    //SlideIn the new game menu, hide the overflow
+    //SlideIn the new game menu
     $('#newgame').click(function(){
       $('#menu').animate({
         left: "-2000px"
@@ -79,11 +81,12 @@ $(document).ready(function(){
       $('#player_type').animate({
         right: "0"
       }, 500);
+      $("#player_type").css("display", "flex")
       //Also bring with him the back arrow
       $('#back_arrow').animate({
         right: $("#back_arrow").parent().width()/2 - $("#back_arrow").width()/2
       }, 300);
-      $('.main_container').css('overflow','hidden');
+      $("#back_arrow").css("display", "flex");
     });
 
     //Control of the back button, contextual
@@ -93,15 +96,16 @@ $(document).ready(function(){
         $('#menu').animate({
           right: "0", left :"0"
         }, 500);
+        $(this).css("display", "flex");
         $('#player_type').animate({
           right: '-2000px'
         },500,function(){
-          $('.main_container').css('overflow','visible');
           $('#player_type').hide();
         });
         $('#back_arrow').animate({
           right: '-2000px'
         }, 100);
+        $('#back_arrow').css("display", "none");
       }else if ((back_button == 'code_maker')) {
         $('#player_type').show()
         $('#code_maker_menu').animate({
@@ -112,6 +116,7 @@ $(document).ready(function(){
         $('#player_type').animate({
           left: '0'
         }, 500);
+        $("#code_maker_menu").css("display", "flex");
         back_button = 'playertype'
       } else if (back_button == 'code_breaker') {
         $('#player_type').show()
@@ -123,6 +128,7 @@ $(document).ready(function(){
         $('#player_type').animate({
           left: '0'
         }, 500);
+        $("#player_type").css("display", "flex");
         back_button = 'playertype'
       }
     });
@@ -140,6 +146,7 @@ $(document).ready(function(){
       $('#code_maker_menu').animate({
         right: '0'
       }, 500);
+      $("#code_maker_menu").css("display", "flex")
       back_button = 'code_maker'
     })
 
@@ -156,6 +163,7 @@ $(document).ready(function(){
       $('#code_breaker_menu').animate({
         right: '0'
       }, 500);
+      $("#code_breaker_menu").css("display", "flex");
       back_button = 'code_breaker'
     })
 
