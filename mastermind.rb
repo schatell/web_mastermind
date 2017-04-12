@@ -7,7 +7,7 @@ helpers do
     create_possible_list
     make_list
     for x in 0..11 do
-      choose_guess
+      choose_guess(x)
       colorized_guess = []
       for x in 0..3 do
         colorized_guess.push(find_color(@guess[x].to_i))
@@ -31,9 +31,9 @@ helpers do
     @possible_solution = @possible.combination(4).to_a
   end
 
-  def choose_guess
+  def choose_guess(x)
     @guess = []
-    if session[:current_turn] == 0
+    if x == 0
       @best_available_guess = []
       @guess = [0, 0, 1, 1]
     else
