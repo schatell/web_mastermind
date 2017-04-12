@@ -36,12 +36,16 @@
     <% end %>
   </div>
 
-  <% if victory || lose %>
+  <% if victory || lose || aiwin || ailost %>
     <div class="endgame_div">
       <% if session[:victory] == true %>
         <h2>You won!</h2>
-      <% else %>
+      <% elsif session[:victory] == false %>
         <h2>You lost!</h2>
+      <% elsif ailost == true %>
+        <h2>The ai lost...</h2>
+      <% else %>
+        <h2>The ai won!</h2>
       <% end %>
       <form method="get" action="/">
         <input type="submit" name="return to main menu" value="Return to main menu">
@@ -58,10 +62,10 @@
   <% if params["code_maker_submit"] %>
     <h2>Secret Code:</h2>
     <div class="pin_wrap">
-      <div style="background-color: <%= @color1 %>;" id="pin1" class="answer_pin"></div>
-      <div style="background-color: <%= @color2 %>;" id="pin1" class="answer_pin"></div>
-      <div style="background-color: <%= @color3 %>;" id="pin1" class="answer_pin"></div>
-      <div style="background-color: <%= @color4 %>;" id="pin1" class="answer_pin"></div>
+      <div style="background-color: <%= @color_code1 %>;" id="pin1" class="answer_pin"></div>
+      <div style="background-color: <%= @color_code2 %>;" id="pin1" class="answer_pin"></div>
+      <div style="background-color: <%= @color_code3 %>;" id="pin1" class="answer_pin"></div>
+      <div style="background-color: <%= @color_code4 %>;" id="pin1" class="answer_pin"></div>
     </div>
 
   <% else %>
