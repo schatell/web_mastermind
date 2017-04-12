@@ -17,7 +17,7 @@ helpers do
       break if check_victory
       react_to_fb
     end
-    @ai_lost = true
+    session[:ailost] = true
   end
 
   def create_possible_list
@@ -135,28 +135,40 @@ helpers do
   def give_fb(guess)
     #Initial variables
     this_turn_feedback = []
-    to_check = [true, true, true, true]
+    guess_to_check = [true, true, true, true]
+    code_to_check = [true, true, true, true]
     code = session[:secret_code]
+
     #Check to see equal position(white pins)
-    to_check.each_with_index do |check, i|
+    guess_to_check.each_with_index do |check, i|
       if check
         if code[i] == guess[i]
           this_turn_feedback.push("white")
-          to_check[i] = false
+          guess_to_check[i] = false
+          code_to_check[i] = false
         end
       end
     end
+
     #Check for black pins
     value_to_match = []
     code.each_index do |i|
-      if to_check[i]
+      if code_to_check[i] == true
         value_to_match << code[i]
       end
     end
 
     guess.each_with_index do |symbol, i|
-      if to_check[i]
-        this_turn_feedback.push("black") if value_to_match.include?(guess[i])
+      if guess_to_check[i]
+        if (value_to_match.include?(guess[i]))
+          this_turn_feedback.push("black")
+          for x in 0..(value_to_match.length) do
+            if value_to_match[x] == guess[i]
+              value_to_match.delete_at(x)
+              break
+            end
+          end
+        end
       end
     end
 
@@ -164,6 +176,7 @@ helpers do
     until this_turn_feedback.length == 4
       this_turn_feedback.push("")
     end
+    this_turn_feedback
     session[:previous_fb].push(this_turn_feedback)
   end
 
@@ -195,8 +208,10 @@ get '/codemaker' do
   session[:current_turn] = 0
   session[:previous_fb] = []
   session[:previous_guess] = []
+  session[:aiwon] = false
+  session[:ailost] = false
   ai_game_loop
-  if @ai_lost == true
+  if session[:ailost] == true
     erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => true, :aiwin => false}
   else
     erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwin => false}

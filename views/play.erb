@@ -38,15 +38,23 @@
 
   <% if victory || lose || aiwin || ailost %>
     <div class="endgame_div">
-      <% if session[:victory] == true %>
-        <h2>You won!</h2>
-      <% elsif session[:victory] == false %>
-        <h2>You lost!</h2>
-      <% elsif ailost == true %>
-        <h2>The ai lost...</h2>
+
+      <% if victory || lose %>
+        <% if victory %>
+          <h2>You won!</h2>
+        <% else %>
+          <h2>You lost!</h2>
+        <% end %>
+
       <% else %>
-        <h2>The ai won!</h2>
+        <% if session[:ailost] == true %>
+          <h2>The ai lost...</h2>
+        <% else %>
+          <h2>The ai won!</h2>
+        <% end %>
+
       <% end %>
+
       <form method="get" action="/">
         <input type="submit" name="return to main menu" value="Return to main menu">
       </form>
