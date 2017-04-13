@@ -49,7 +49,7 @@
       <% else %>
         <% if session[:ailost] == true %>
           <h2>The ai lost...</h2>
-        <% else %>
+        <% elsif session[:aiwon] == true %>
           <h2>The ai won!</h2>
         <% end %>
 
@@ -69,7 +69,7 @@
 
   <% if params["code_maker_submit"] %>
     <h2>Secret Code:</h2>
-    <div class="pin_wrap">
+    <div class="pin_wrap" id="main_pin">
       <div style="background-color: <%= @color_code1 %>;" id="pin1" class="answer_pin"></div>
       <div style="background-color: <%= @color_code2 %>;" id="pin1" class="answer_pin"></div>
       <div style="background-color: <%= @color_code3 %>;" id="pin1" class="answer_pin"></div>
@@ -80,7 +80,7 @@
   <% unless victory || lose %>
 
   <h2>Next Guess:</h2>
-    <div class="pin_wrap">
+    <div class="pin_wrap" id="main_pin">
       <div id="pin1" class="pin"></div>
       <div id="pin2" class="pin"></div>
       <div id="pin3" class="pin"></div>

@@ -14,7 +14,10 @@ helpers do
       end
       session[:previous_guess].push(colorized_guess)
       give_fb(@guess)
-      break if check_victory
+      if check_victory
+        session[:aiwon] = true
+        break
+      end
       react_to_fb
     end
     session[:ailost] = true
