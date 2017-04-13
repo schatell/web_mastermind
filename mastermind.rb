@@ -20,7 +20,6 @@ helpers do
       end
       react_to_fb
     end
-    session[:ailost] = true
   end
 
   def create_possible_list
@@ -214,10 +213,13 @@ get '/codemaker' do
   session[:aiwon] = false
   session[:ailost] = false
   ai_game_loop
-  if session[:ailost] == true
-    erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => true, :aiwin => false}
+  if session[:aiwon] == false
+    session[:ailost] == true
+  end
+  if session[:aiwon] == true
+    erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwon => true}
   else
-    erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwin => false}
+    erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => true, :aiwon => false}
   end
 
 end
@@ -229,7 +231,7 @@ get '/codebreaker' do
   session[:previous_guess] = []
   session[:victory] = false
   session[:lose] = false
-  erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwin => false}
+  erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwon => false}
 end
 
 post '/codebreaker' do
@@ -249,11 +251,11 @@ post '/codebreaker' do
   end
   session[:current_turn] += 1
   if session[:current_turn] >= 12
-    erb :play, :locals => {:session => session, :lose => true, :victory => false, :ailost => false, :aiwin => false}
+    erb :play, :locals => {:session => session, :lose => true, :victory => false, :ailost => false, :aiwon => false}
   elsif session[:victory] == true
-    erb :play, :locals => {:session => session, :lose => false, :victory => true, :ailost => false, :aiwin => false}
+    erb :play, :locals => {:session => session, :lose => false, :victory => true, :ailost => false, :aiwon => false}
   else
-    erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwin => false}
+    erb :play, :locals => {:session => session, :lose => false, :victory => false, :ailost => false, :aiwon => false}
   end
 
 end

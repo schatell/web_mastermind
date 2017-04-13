@@ -36,7 +36,7 @@
     <% end %>
   </div>
 
-  <% if victory || lose || aiwin || ailost %>
+  <% if victory || lose || aiwon || ailost %>
     <div class="endgame_div">
 
       <% if victory || lose %>
@@ -47,9 +47,9 @@
         <% end %>
 
       <% else %>
-        <% if session[:ailost] == true %>
+        <% if ailost %>
           <h2>The ai lost...</h2>
-        <% elsif session[:aiwon] == true %>
+        <% else %>
           <h2>The ai won!</h2>
         <% end %>
 
