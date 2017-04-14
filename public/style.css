@@ -89,6 +89,7 @@ h1 {
   align-items: center;
   justify-content: center;
   display: flex;
+  flex: 4;
   flex-direction: row;
   z-index: 2;
 }
@@ -293,11 +294,11 @@ h4{
   flex-direction: row;
 }
 .play_pin{
-  box-sizing: border-box;
   display: flex;
+  box-sizing: border-box;
+  width: 5vw;
+  height: 5vw;
   border-radius: 50%;
-  padding-top: 10%;
-  width: 12%;
   background-color: rgba(209, 199, 199, 0.8);
   border: 4px solid white;
   margin-left: 2px;
